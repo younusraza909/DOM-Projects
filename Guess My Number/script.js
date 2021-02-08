@@ -1,5 +1,5 @@
 //Secret Number
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 //Scoring
 let score = 20;
@@ -43,4 +43,19 @@ document.querySelector(".check").addEventListener("click", function () {
   }
 });
 
-//Play Agin Functionality
+//Play Again Functionality
+document.querySelector(".again").addEventListener("click", function () {
+  //Restoring all values
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  score = 20;
+
+  //Restoring initial condition of message
+  document.querySelector(".message").textContent = "Start guessing...";
+  document.querySelector(".number").textContent = "?";
+  document.querySelector(".guess").value = "";
+  document.querySelector(".score").textContent = score;
+
+  //Restoring styles
+  document.querySelector("body").style.backgroundColor = "#222";
+  document.querySelector(".number").style.width = "15rem";
+});
