@@ -24,3 +24,11 @@ for (let i = 0; i < btnOpenModal.length; i++)
 btnCloseModal.addEventListener("click", closeModal);
 
 overlay.addEventListener("click", closeModal);
+
+//Keyboard events are global events we dont listen to it on specific events
+//we listen these type of events on document as whole
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+    closeModal();
+  }
+});
