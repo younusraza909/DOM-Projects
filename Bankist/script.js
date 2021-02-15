@@ -50,3 +50,26 @@ document
   .addEventListener("click", function () {
     message.remove();
   });
+
+//Styles
+// .style only accesable for inline styles
+message.style.backgroundColor = "#37383d";
+message.style.width = "120%";
+
+// to get all styles for element we will use (getComputedStyle(element))
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 20 + "px";
+
+//Accessing Css variable
+// document.documentElement.style.setProperty("--color-primary", "orangered");
+
+//Attributes
+const logo = document.querySelector(".nav__logo");
+console.log(logo.alt);
+console.log(logo.className);
+console.log(logo.designer); //will not work
+//those property which are standard to element can be accessed by this otherwise will return undefined
+console.log(logo.getAttribute("designer")); //will work
+
+//Data Attributes
+console.log(logo.dataset.versionNumber);
