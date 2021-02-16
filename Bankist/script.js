@@ -85,7 +85,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   }
 });
-
+//////////////////////////////////////////////////////////
 // //Creating and insterting cookies message to Page
 // const header = document.querySelector(".header");
 
@@ -106,6 +106,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 //     message.remove();
 //   });
 
+//////////////////////////////////////////////////////////
 // //Styles
 // // .style only accesable for inline styles
 // message.style.backgroundColor = "#37383d";
@@ -129,6 +130,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 // //Data Attributes
 // console.log(logo.dataset.versionNumber);
 
+///////////////////////////////////////////////////////
 // //EVENT PROPOGATION IN PRACTICE
 
 // // rgb(255,255,255)
@@ -155,4 +157,34 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 // document.querySelector(".nav").addEventListener("click", function (e) {
 //   this.style.backgroundColor = randomColor();
 //   // console.log("NAv", e.target, e.currentTarget);
+// });
+
+///////////////////////////////////////////////////////
+// // DOM TRAVERSING
+// const h1 = document.querySelector("h1");
+
+// //Going Downward: child
+// console.log(h1.querySelectorAll(".highlight"));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = "white";
+// h1.lastElementChild.style.color = "green";
+
+// //Going Upward
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+
+// //closet method find parent
+// //query selector find children
+// h1.closest(".header").style.background = "var(--gradient-secondary)";
+
+// //going siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
+
+// //
+// console.log(h1.parentElement.children);
+// // [...xyz] will create array from that
+// [...h1.parentElement.children].forEach(function (el) {
+//   if (el !== h1) el.style.transform = "scale(0.5)";
 // });
