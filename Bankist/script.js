@@ -134,6 +134,15 @@ const handleHover = function (e) {
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
+/////////////////////////////////////////////////////////
+//STICKY NAVIGATION
+//scroll event available on window only
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+window.addEventListener("scroll", function () {
+  if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
+  else nav.classList.remove("sticky");
+});
 ///////////////////////////////////////////////////////
 // //Creating and insterting cookies message to Page
 // const header = document.querySelector(".header");
