@@ -85,7 +85,26 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   }
 });
-//////////////////////////////////////////////////////////
+
+//Tabbed Component
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
+
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
+  //Guard clause
+  if (!clicked) return;
+  tabs.forEach((t) => t.classList.remove("operations__tab--active"));
+  clicked.classList.add("operations__tab--active");
+
+  //Active Content Tab
+  tabsContent.forEach((t) => t.classList.remove("operations__content--active"));
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add("operations__content--active");
+});
+///////////////////////////////////////////////////////
 // //Creating and insterting cookies message to Page
 // const header = document.querySelector(".header");
 
