@@ -143,6 +143,28 @@ window.addEventListener("scroll", function () {
   if (window.scrollY > initialCoords.top) nav.classList.add("sticky");
   else nav.classList.remove("sticky");
 });
+
+//Reveal Section On Scrolling
+
+const allSection = document.querySelectorAll(".section");
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  //null is for complete view port can specifie any element
+  threshold: 0.15,
+});
+
+allSection.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
+
 ///////////////////////////////////////////////////////
 // //Creating and insterting cookies message to Page
 // const header = document.querySelector(".header");
