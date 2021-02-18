@@ -165,6 +165,31 @@ allSection.forEach(function (section) {
   section.classList.add("section--hidden");
 });
 
+//Lazy Image Loading Using intersecton API
+
+const imgTargets = document.querySelectorAll("img[data-src]");
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+  if (!entry.isIntersecting) return;
+
+  entry.target.attributes[0].value = entry.target.attributes[1].value;
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
+  });
+  observer.unobserve(entry.target);
+};
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0.2,
+  //it will start loading img 200px before we reach threshold
+  rootMargin: "200px",
+});
+
+imgTargets.forEach(function (img) {
+  imgObserver.observe(img);
+});
 ///////////////////////////////////////////////////////
 // //Creating and insterting cookies message to Page
 // const header = document.querySelector(".header");
