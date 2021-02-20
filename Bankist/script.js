@@ -171,7 +171,6 @@ const imgTargets = document.querySelectorAll("img[data-src]");
 
 const loadImg = function (entries, observer) {
   const [entry] = entries;
-  console.log(entry);
   if (!entry.isIntersecting) return;
 
   entry.target.attributes[0].value = entry.target.attributes[1].value;
@@ -189,6 +188,44 @@ const imgObserver = new IntersectionObserver(loadImg, {
 
 imgTargets.forEach(function (img) {
   imgObserver.observe(img);
+});
+
+///Slider Componenent
+const slides = document.querySelectorAll(".slide");
+const slider = document.querySelector(".slider");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
+
+let curSlide = 0;
+const maxSlide = slides.length;
+
+slider.style.transform = "scale(0.4) translateX(-800px)";
+slider.style.overflow = "visible";
+slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
+
+const goToSlide = function (slide) {
+  slides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+};
+
+//Next slide
+btnRight.addEventListener("click", function (e) {
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+  goToSlide(curSlide);
+});
+//Prev slide
+btnLeft.addEventListener("click", function (e) {
+  if (curSlide === 0) {
+    curSlide = maxSlide - 1;
+  } else {
+    curSlide--;
+  }
+  goToSlide(curSlide);
 });
 ///////////////////////////////////////////////////////
 // //Creating and insterting cookies message to Page
